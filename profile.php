@@ -14,6 +14,9 @@ $result = $data->select_user($_SESSION['user']);
 
 $user = mysqli_fetch_assoc($result);
 
+$username = $user['username'];
+$email = $user['email'];
+$avatar = $user['avatar'];
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +27,29 @@ $user = mysqli_fetch_assoc($result);
 	<meta charset="UTF-8">
 	<title>News - Bhaccasyoniztas Beach Resort Website Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<style>
+		.avatar-container {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.avatar-container img {
+			--lenght: 150px;
+			width: var(--lenght);
+			height: var(--lenght);
+			border-radius: 50%;
+		}
+		.btn-primary {
+			display: inline-block;
+			padding: 8px 12px;
+			background-color: #0d6efd;
+			color: white;
+			border-radius: 4px;
+			text-decoration: none;
+		}
+		.btn-group {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
@@ -33,20 +59,24 @@ $user = mysqli_fetch_assoc($result);
 			<div id="contents">
 				<div class="box">
 					<div>
-						<div id="news" class="body">
+						<div class="body">
 							<?php
-							echo $_SESSION['user'];
+							// echo $_SESSION['user'];
 
-							echo "<h1>Username: {$user['username']}</h1>";
+							// echo "<h1>Username: {$user['username']}</h1>";
 
 							if (!empty($user['avatar'])) {
-								echo "<img style='width: 500px;' src='{$user['avatar']}' />";
+								echo '<div class="avatar-container">';
+								echo "<a href='update.php'><img src='{$user['avatar']}' onerror='onLoadAvatarErr(this)' /></a>";
+								echo "<div>$username</div>";
+								echo "<div>$email</div>";
+								echo '</div>';
 							}
 							?>
-							<div>
-								<a href="logout.php">Logout</a>
-								<a href="update.php">Update</a>
-								<a href="changepassword.php">Đổi mật khẩu</a>
+							<div class="btn-group">
+								<a class="btn-primary" href="logout.php">Logout</a>
+								<a class="btn-primary" href="update.php">Update</a>
+								<a class="btn-primary" href="changepassword.php">Đổi mật khẩu</a>
 							</div>
 						</div>
 					</div>

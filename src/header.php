@@ -14,7 +14,7 @@ if (!empty($_SESSION['user'])) {
 	<script>
 		function onLoadAvatarErr(_this) {
 			_this.src = 'images/avatar_default.png';
-			_this.onerror='';
+			_this.onerror = '';
 		}
 	</script>
 	<div id="logo">

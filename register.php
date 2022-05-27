@@ -23,7 +23,7 @@ if (isset($_POST['txt_submit'])) {
 			isset($url) ? $url : ''
 		);
 		if ($statusCode == 0) {
-			header('Location: contact.php');
+			header('Location: login.php');
 		}
 	}
 }
