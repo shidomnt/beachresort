@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'src/connect.php';
 include 'src/control.php';
 
 $current_user_email = $_SESSION['user'];
@@ -9,7 +8,6 @@ if (empty($current_user_email)) {
 	header('Location:login.php');
 	exit();
 }
-
 
 $data = new Data();
 

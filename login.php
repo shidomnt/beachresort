@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'src/connect.php';
 include 'src/control.php';
 
 if (isset($_SESSION['user'])) {
@@ -66,6 +65,10 @@ if (isset($_POST['txt_submit'])) {
 		}
 		#contact form input {
 			height: unset;
+			width: 100%;
+		}
+		
+		#contents {
 			width: 100%;
 		}
 	</style>

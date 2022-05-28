@@ -1,5 +1,4 @@
 <?php
-include 'src/connect.php';
 include 'src/control.php';
 if (isset($_POST['txt_submit'])) {
 	if (empty($_POST['txt_email']) || empty($_POST['txt_username'] || empty($_POST['txt_password']))) {
@@ -83,6 +82,10 @@ if (isset($_POST['txt_submit'])) {
 			border: none;
 			border-radius: 4px;
 			cursor: pointer;
+		}
+
+		#contents {
+			width: 100%;
 		}
 	</style>
 </head>

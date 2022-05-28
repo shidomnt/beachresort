@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'src/connect.php';
 include 'src/control.php';
 
 $is_forgot = empty($_SESSION['user']);

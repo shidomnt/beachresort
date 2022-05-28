@@ -1,5 +1,4 @@
 <?php session_start();
-include 'src/connect.php';
 include 'src/control.php';
 if (empty($_SESSION['user'])) {
   header('Location: login.php');

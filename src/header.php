@@ -46,10 +46,10 @@ if (!empty($_SESSION['user'])) {
 				<a href="dives.php">Dives</a>
 			</li>
 			<li>
-				<a href="taikhoan.php">Tai khoan</a>
+				<a href="news.php">News</a>
 			</li>
 			<li>
-				<a href="profile.php">Profile</a>
+				<a href="taikhoan.php">Tai khoan</a>
 			</li>
 			<li>
 				<a href="register.php">Register</a>
