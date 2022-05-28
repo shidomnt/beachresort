@@ -18,6 +18,7 @@ $state = !empty($_GET['state']) ? $_GET['state'] : '';
   <meta charset="UTF-8">
   <title>About - Bhaccasyoniztas Beach Resort Web Template</title>
   <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css">
   <style>
     * {
       margin: 0;
@@ -185,10 +186,7 @@ $state = !empty($_GET['state']) ? $_GET['state'] : '';
                     </div>
                   </div>
                   <div class="row j-center">
-                    <input type="submit" 
-                    name="txt_submit" 
-                    value="<?php echo $state == 'new' ? 'Create' : 'Update'?>"
-                    >
+                    <input type="submit" name="txt_submit" value="<?php echo $state == 'new' ? 'Create' : 'Update' ?>">
                   </div>
                   <?php
                   if ($state == 'new') {
@@ -225,7 +223,32 @@ $state = !empty($_GET['state']) ? $_GET['state'] : '';
                   }
                   ?>
                 </form>
-              <?php } else { ?>
+              <?php
+              } else if ($state == 'delete') {
+                if (empty($_GET['id'])) {
+                  echo '<script>
+                    do {
+                      var id = window.prompt("Vui long nhap id hop le: ");
+                      if (id) {
+                        window.location.href = `news.php?state=delete&id=${id}`
+                      } else {
+                        window.location.href = `news.php`
+                      }
+                    } while(!id);
+                    </script>';
+                  exit();
+                }
+                $result = News::delete($_GET['id']);
+                if ($result) {
+                  echo '
+                  <script>window.location.href = `news.php`</script>
+                  ';
+                } else {
+                  echo '
+                  <script>window.alert("Xay ra loi khi xoa")</script>
+                  ';
+                }
+              } else { ?>
 
                 <table class="table m-b" border="1" cellspacing="0" , cellpadding="4">
                   <thead>
@@ -265,7 +288,7 @@ $state = !empty($_GET['state']) ? $_GET['state'] : '';
                           <a href="?state=update&id=<?= $new['id'] ?>">Sửa</a>
                         </td>
                         <td>
-                          <a href="?state=delete&id=<?= $new['id'] ?>">Xóa</a>
+                          <a href="?state=delete&id=<?= $new['id'] ?>" class="delete-btn">Xóa</a>
                         </td>
                       </tr>
                     <?php } ?>
@@ -281,8 +304,8 @@ $state = !empty($_GET['state']) ? $_GET['state'] : '';
       </div>
     </div>
     <?php include 'src/footer.php' ?>
-
   </div>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

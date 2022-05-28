@@ -7,6 +7,15 @@ include_once 'control.php';
 
 class News
 {
+  public static function delete(string $id) {
+    global $conn;
+    $sql = 
+    "DELETE FROM news
+    WHERE id = $id
+    ";
+    $run = mysqli_query($conn, $sql);
+    return $run;
+  }
   public static function update(
     string $id,
     string $title,
